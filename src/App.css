@@ -4,7 +4,6 @@ body, html {
   height: 100%;
   background-image: url(./components/Images/background7.jpeg);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -71,4 +70,24 @@ body, html {
   background-color: #157ab4;
   color: #ffffff;
   cursor: pointer;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid orange;
+}
+.form-inputs {
+  display: flex;
+  justify-content: center;
+  border: 5px solid rgb(63, 28, 152);
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.review-list {
+  background-color: #7e7e7e;
+  list-style: none;
 }
