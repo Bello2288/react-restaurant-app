@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 body, html {
-  margin: 0;
+  margin: 10px;
   padding: 0;
   height: 100%;
   background-image: url(./components/Images/background7.jpeg);
@@ -12,7 +14,22 @@ body, html {
   flex-direction: column;
   align-items: center;
   color: white;
-  margin-top: 35px; 
+  margin: 0;
+}
+.logo {
+  background-image: url(./components/Images/logo2.jpeg);
+  height: 275px;
+  width: 650px;
+  background-position: center;
+  background-size: cover;
+}
+h1 {
+  margin: 15px 0;
+  padding: 5px 15px;
+  font-size: 55px;
+  color: #f4eeee;
+  font-family: 'Pacifico';
+  background-color: #000000;
 }
 
 .app-container {
@@ -20,9 +37,39 @@ body, html {
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  border: 5px solid rgb(198, 238, 20);
   color: white;
 }
+.hover:hover {
+  background-color: #646363;
+}
+
+.about {
+  height: 100%;
+  width: 85%;
+  background-color: #000000;
+  color: #ffffff;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+
+h3 {
+  margin-top: 15px;
+  font-size: 25px;
+  text-align: center;
+}
+
+p {
+  font-size: 15px;
+  text-align:left;
+  padding: 8px 25px;
+  margin: 0;
+}
+
+
+/* =======================================================================================
+==========================================================================================
+========================      NAV   and   SOCIAL  BAR     ============================= */
+
 
 .nav-bar {
   display: flex;
@@ -35,7 +82,8 @@ body, html {
 .nav-bar button {
   font-size: 20px;
   padding: 5px 15px;
-  background-color: #db941b;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .social-bar {
@@ -45,7 +93,7 @@ body, html {
 }
 .social-bar li {
   margin-right: 30px;
-  font-size: 35px;
+  font-size: 28px;
   height: 40px;
   width: 40px;
   border-radius: 5px;
@@ -72,22 +120,128 @@ body, html {
   cursor: pointer;
 }
 
+
+/* ====================      NAV   and   SOCIAL  BAR     =================================
+==========================================================================================
+=========================         REVIEW LIST         ================================= */
+
 .form-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  border: 5px solid orange;
 }
 .form-inputs {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  border: 5px solid rgb(63, 28, 152);
-  /* margin-left: auto;
-  margin-right: auto; */
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.name-box {
+  width: 100%;
+}
+.review-box {
+  width: 100%;
+}
+.submit-btn {
+  background-color: #000000;
+  border: none;
+}
+.review-list {
+  margin-top: 10px;
+  border: 2px solid #000000;
+  padding: 10px;
+  background-color: #000000;
+  border-radius: 7px;
+  color: #ffffff;
+  list-style: none;
 }
 
-.review-list {
-  background-color: #7e7e7e;
+/* ======================          REVIEW LIST        ====================================
+==========================================================================================
+=========================          MENU LIST          ================================= */
+
+
+.menuArea {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-menu {
+  width: 60%;
+  padding: 10px;
+  
+}
+
+.menu-list {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  border: none;
+}
+
+.menu-card {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-image {
+  width: 30%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-top-right-radius: 0;
+}
+.card-body {
+  color: #ffffff;
+  background-color: #000000;
+}
+.card-footer {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.menu-order {
+  display: flex;
+}
+
+
+/* ====================           MENU LIST          =====================================
+==========================================================================================
+=======================          ORDER FORM        ==================================== */
+
+.order-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order {
+  height: 100%;
+  width: 400px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */
+}
+.order-btn {
+  background-color: #646363;
+  border: none;
+  border-radius: 0%;
+}
+
+.nav-item {
+  color: #ffffff;
+  background-color: #000000;
+}
+.complete-order-btn {
+  margin-left: 55px;
+
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import ReviewsForm from "./ReviewsForm";
 import ReviewsDetail from "./ReviewsDetail";
 
-const INITIAL_REVIEWS = [
+const INITIAL_REVIEWS = [ 
   {
     id: 1,
     name: "Bill Murray",

@@ -22,12 +22,11 @@ function ReviewsForm(props) {
     <Form onSubmit={handleSubmit} className="col-md-6 form-box">
       <h2>Please let us know how we did. Leave a review..</h2>
       <div className="form-inputs">
-        <Form.Group className="" controlId="name">
+        <Form.Group className="name-box" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
-            type="text"
-            required="true"
-            placeholder="Enter name"
+            type="text" 
+            required={true}
             name="name"
             value={name}
             onChange={(e) =>
@@ -35,12 +34,12 @@ function ReviewsForm(props) {
             }
             />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="body">
+        <Form.Group className="review-box" controlId="body">
             <Form.Label>Review</Form.Label>
             <Form.Control
             as="textarea"
-            required="true"
-            rows={5}
+            required={true}
+            rows={1}
             name="body"
             value={body}
             onChange={(e) =>
@@ -49,7 +48,7 @@ function ReviewsForm(props) {
             />
         </Form.Group>
         </div>
-      <Button variant="primary" type="submit">
+      <Button className="submit-btn" type="submit">
         Submit
       </Button>
     </Form>
