@@ -1,4 +1,3 @@
-import Accordion from "react-bootstrap/Accordion";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import { useState } from "react";
@@ -9,7 +8,7 @@ import { nanoid } from "nanoid";
 
 function OrderForm({ order, addOrder, resetOrder }) {
   const [show, setShow] = useState(false);
-  const [name, setName] = useState("");
+  const [customer, setCustomer] = useState("");
   const [phone, setPhone] = useState("");
 
   const handleClose = () => {
@@ -18,7 +17,7 @@ function OrderForm({ order, addOrder, resetOrder }) {
   };
 
   const handleShow = () => setShow(true);
-
+ 
   function addTotal() {
     let total = 0;
     order.forEach((order) => {
@@ -28,29 +27,25 @@ function OrderForm({ order, addOrder, resetOrder }) {
   }
 
   const handleSubmit = () => {
-    addOrder(order, name, phone);
-    setName("");
+    addOrder(order, customer, phone);
+    setCustomer("");
     setPhone("");
     resetOrder();
   };
 
   const orderList = order.map((orderItem) => (
-    <ListGroup.Item key={nanoid()} className="d-flex justify-content-between align-items-start">
+    <ListGroup.Item key={nanoid()} className="d-flex justify-content-between align-items-start order-group">
       {orderItem.name}
       <Badge bg="secondary">${orderItem.price.toFixed(2)}</Badge>
     </ListGroup.Item>
   ));
 
+
   return (
       <ListGroup variant="flush">
         {orderList}
-        <ListGroup.Item 
-              variant="dark"
-              className="order">
-              <header>
-                Your Order 
-                <Badge bg="secondary">{order.length}</Badge>
-              </header>
+            <ListGroup.Item variant="dark" className="order">
+              <header>Your Order </header>
               Total: ${addTotal()}
               <Button className='complete-order-btn' variant="secondary" type="button" onClick={handleShow}>
                 Complete Order
@@ -66,7 +61,8 @@ function OrderForm({ order, addOrder, resetOrder }) {
                       <Form.Control
                         type="text"
                         placeholder="Enter name"
-                        onChange={(e) => setName(e.target.value)}
+                        required={true}
+                        onChange={(e) => setCustomer(e.target.value)}
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="phone">
@@ -74,13 +70,14 @@ function OrderForm({ order, addOrder, resetOrder }) {
                       <Form.Control
                         type="text"
                         placeholder="Enter phone number"
+                        required={true}
                         onChange={(e) => setPhone(e.target.value)}
                       />
                     </Form.Group>
                   </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="primary" onClick={handleClose}>
+                  <Button className="submit-btn" variant="primary" onClick={handleClose}>
                     Submit Order
                   </Button>
                 </Modal.Footer>

@@ -2,8 +2,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function MenuList({ item, ...props }) {
- 
-
   return (
     <li className="menu-list">
       <Card className="menu-card">

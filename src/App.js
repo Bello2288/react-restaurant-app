@@ -1,13 +1,9 @@
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-
 import './App.css';
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useState, useEffect   } from "react";
 import Home from './components/Home/Home';
 import Menu from './components/Menu/Menu';
-// import OrderForm from './components/OrderForm/OrderForm';
+import OrderForm from './components/OrderForm/OrderForm';
 import Reviews from './components/Reviews/Reviews';
 
 
@@ -24,7 +20,7 @@ const INITIAL_MENU_LIST = [
     name: "BBQ Pulled Pork Pizza",
     image: "https://www.floatingkitchen.net/wp-content/uploads/2016/01/Pulled-Pork-Pizza-2.jpg",
     description: "Pulled pork smoked at Lillie’s Q over peach wood for eight hours, Hot Smokey BBQ and mozzarella. Topped with Carolina Dirt BBQ rub and slaw.",
-    price: 16,
+    price: 16.00,
     type: "pizza",
     id: nanoid(),
   },
@@ -32,7 +28,7 @@ const INITIAL_MENU_LIST = [
     name: "Korean Fried Chicken Pizza",
     image: "https://cdn.shopify.com/s/files/1/0808/5563/articles/Korean_BBQ_Pizza_Web_3000x3000_191ab50d-f099-478a-80af-dea8601623b1_600x.jpg?v=1597439876",
     description: "Red pepper sauce, garlic puree, kimchi, mozzarella, smoked gouda, Korean fried chicken, scallions, sesame seeds and cilantro.",
-    price: 17.5,
+    price: 17.50,
     type: "pizza",
     id: nanoid(),
   },
@@ -63,7 +59,7 @@ const INITIAL_MENU_LIST = [
   {
     name: "Arugula Tomato Pizza",
     image: "https://static.onecms.io/wp-content/uploads/sites/19/2011/09/08/bacon-tomato-arugula-pizza-ck-x.jpg",
-    description: "Goat cheese, marinated tomato, arugula, mozzarella, sauce, garlic, chives",
+    description: "Goat cheese, marinated tomato, romaine lettuce, arugula, mozzarella, sauce, garlic, chives",
     price: 15.99,
     type: "pizza",
     id: nanoid(),
@@ -72,7 +68,7 @@ const INITIAL_MENU_LIST = [
     name: "Meat Lovers Pizza",
     image: "https://cdn11.bigcommerce.com/s-p6vajvx5jy/images/stencil/1280x1280/products/117/663/Meat_Lovers_2__84120.1556128972.jpg?c=2",
     description: "Our special-blend Italian Sausage, smoked ham, pepperoni, smoked bacon, soppressata, capicola, & mozzarella cheese.",
-    price: 24.99,
+    price: 22.99,
     type: "pizza",
     id: nanoid(),
   },
@@ -96,7 +92,7 @@ const INITIAL_MENU_LIST = [
     name: "Mozzarella Sticks",
     image: "https://www.lemontreedwelling.com/wp-content/uploads/2020/11/air-fryer-mozzarella-sticks-featured.jpg",
     description: "Made completely from scratch. Housemade and hand-stretched mozzarella, herbed breadcrumbs and marinara.",
-    price: 9.99,
+    price: 8.99,
     type: "appetizer",
     id: nanoid(),
   },
@@ -104,7 +100,7 @@ const INITIAL_MENU_LIST = [
     name: "Panza Bread Sticks",
     image: "https://www.kingarthurbaking.com/sites/default/files/styles/featured_image_2x/public/2021-11/artisan-breadsticks_1021.jpg?itok=NJZBBZJS",
     description: "Quad Cities mozzarella blend, garlic parmesan sauce and pizza sauce.",
-    price: 9.99,
+    price: 7.99,
     type: "appetizer",
     id: nanoid(),
   },
@@ -112,7 +108,7 @@ const INITIAL_MENU_LIST = [
     name: "Roots Caesar Salad",
     image: "https://images.happycow.net/venues/1024/11/92/hcmp119299_562697.jpeg",
     description: "Romaine & red leaf lettuce, crispy prosciutto, garlic croutons, shaved parmesan and creamy Caesar dressing",
-    price: 9.99,
+    price: 7.99,
     type: "salad",
     id: nanoid(),
   },
@@ -120,7 +116,7 @@ const INITIAL_MENU_LIST = [
     name: "Popcorn Chicken Cobb Salad",
     image: "https://summeryule.com/wp-content/uploads/2022/06/salads-with-popcorn-chicken.jpeg",
     description: "Romaine, arugula, cabbage, tomatoes, pickles, corn, scallions, dill, egg, garlic croutons and buttermilk black truffle dressing.",
-    price: 10.99,
+    price: 8.99,
     type: "salad",
     id: nanoid(),
   },
@@ -128,7 +124,7 @@ const INITIAL_MENU_LIST = [
     name: "Southwest Chipotle Chicken & Avocado Salad",
     image: "https://www.mylatinatable.com/wp-content/uploads/2016/02/foto-heroe.jpg",
     description: "Arugula, cilantro, cabbage, pulled chicken, radish, avocado, crispy shallots, pickled red onions, Tajin-roasted sweet potatoes, tortilla strips, black beans, corn, queso cotija and creamy chipotle dressing.",
-    price: 13.99,
+    price: 10.99,
     type: "salad",
     id: nanoid(),
   },
@@ -136,8 +132,8 @@ const INITIAL_MENU_LIST = [
     name: "Chocolate Cream Pie",
     image: "https://www.livewellbakeoften.com/wp-content/uploads/2019/06/Chocolate-Cream-Pie-7.jpg",
     description:
-      "a shareable bowl of bites of our pizza dough, tossed in butter and cinnamon sugar, served with vanilla glaze for dipping",
-    price: 8.99,
+      "A shareable bowl of bites of our pizza dough, tossed in butter and cinnamon sugar, served with vanilla glaze for dipping",
+    price: 6.99,
     type: "dessert",
     id: nanoid(),
   },
@@ -145,7 +141,7 @@ const INITIAL_MENU_LIST = [
     name: "Fruity Pebbles Cheesecake",
     image: "https://img.buzzfeed.com/video-api-prod/assets/2fa18b27a66f42c2a624ebd822a00a2c/FB.jpg",
     description: "Funfetti cheesecake on a graham cracker crust. Topped with whipped cream and glazed Fruity Pebbles.",
-    price: 8.99,
+    price: 6.99,
     type: "dessert",
     id: nanoid(),
   },
@@ -153,7 +149,7 @@ const INITIAL_MENU_LIST = [
     name: "Brownie Sundae",
     image: "https://i.pinimg.com/originals/60/ca/f3/60caf37025864346980bdad5b50d9195.jpg",
     description: "Warm old fashioned brownie topped with either vanilla or chocolate ice cream. Finished with whipped cream and chocolate sauce.",
-    price: 8.99,
+    price: 6.99,
     type: "dessert",
     id: nanoid(),
   },
@@ -163,15 +159,32 @@ const INITIAL_MENU_LIST = [
 
 function App() {
   const [selection, setSelection] = useState("a");
-
   const [menuItems, setMenuItems] = useState(INITIAL_MENU_LIST);
   const [order, setOrder] = useState([]);
+  // const [menuItems, setMenuItems] = useState(INITIAL_MENU_ITEMS);
+  // const [order, setOrder] = useState([]);
+  const [submittedOrders, setSubmittedOrders] = useState([]);
 
-  // const updateOrder = (id) => {
-  //   const index = menuItems.findIndex((item) => item.id === id);
-  //   const newOrderItem = menuItems[index];
-  //   setOrder([...order, newOrderItem]);
-  // };
+  const updateOrder = (id) => {
+    const index = menuItems.findIndex((item) => item.id === id);
+    const newOrderItem = menuItems[index];
+    setOrder([...order, newOrderItem]);
+  };  
+
+  const addOrder = (order, customer, phone) => {
+    let finalOrder = {order, customer, phone};
+    alert("Your order has been submitted, thank you for your business!")
+    console.log(finalOrder);
+    setSubmittedOrders([...submittedOrders, finalOrder]);
+}
+
+useEffect(() => {
+  localStorage.setItem('submittedOrders', JSON.stringify(submittedOrders))
+}, [submittedOrders]);
+
+const resetOrder = () => {
+  setOrder([]);
+}
 
   return (
     <div className="App"> 
@@ -206,8 +219,10 @@ function App() {
         </nav>
       </section>
         {selection === "a" && <Home />}
-        {selection === "b" && <Menu menuItems={menuItems} order={order}  />}
-        {/* {selection === "c" && <OrderForm order={order} />} */}
+        <section className='menu-order'>
+          {selection === "b" && <Menu menuItems={menuItems} updateOrder={updateOrder} />}
+          {selection === "b" && <OrderForm order={order} addOrder={addOrder} resetOrder={resetOrder} />}
+        </section>
         {selection === "c" && <Reviews />}
     </div>
   );
